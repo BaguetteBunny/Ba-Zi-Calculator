@@ -1,3 +1,33 @@
+function conversionGregorianSexagenary(year) { // https://en.wikipedia.org/wiki/Sexagenary_cycle#Conversion_between_cyclic_years_and_Western_years
+    let modifiedYear = 0;
+    let discardedFraction = 0;
+
+    switch (year) {
+        case year > 4:
+            modifiedYear = year - 3;
+            discardedFraction = Math.floor(modifiedYear, 60);
+            return modifiedYear - (60 * discardedFraction);
+
+        case year < 1:
+            year = Math.abs(year);
+            modifiedYear = year + 2;
+            discardedFraction = Math.floor(modifiedYear, 60);
+            return 60 - (modifiedYear - (60 * discardedFraction));
+        
+        case year == 1:
+            return 58;
+        
+        case year == 2:
+            return 59;
+
+        case year == 3:
+            return 60;
+
+        default:
+            throw "Something went wrong with converting Gregorian years to Sexagenary years.";
+    }
+}
+
 function yearlyElement(year){
     let i = 0
     if (year%2==0){
@@ -81,16 +111,15 @@ function monthlyElement(year,month){
 }
 
 const prompt = require("prompt-sync")()
-
 let birthday = prompt('Your birthday in DD/MM/YYYY format.')
 let hourminute = prompt('The time of birth in 00:00 format.')
+
 const dateArray = birthday.split('/')
 const hourArray = hourminute.split(':')
 const day = parseInt(dateArray[0])
 const month = parseInt(dateArray[1])
 let year = parseInt(dateArray[2])
 const hour = parseInt(hourArray[0])
-const minute = parseInt(hourArray[1])
 const epoch = -2696
 
 if (year < epoch){year = epoch}
