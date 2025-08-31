@@ -20,4 +20,28 @@ function solveDiophantineForPeriodicity(max) {
     return solutions.splice(1); // Remove w = x = y = z = 0 because redundant
 }
 
-console.log(solveDiophantineForPeriodicity(500))
+function solveMinDiophantineForPeriodicity(max) {
+    let temp = 0;
+    let min_solution = 100000000;
+    let min_variables = null;
+
+    for (let w = 1; w <= max; w++) {
+        for (let x = 1; x <= max; x++) {
+            for (let y = 1; y <= max; y++) {
+                const n = 21900 * w + 60 * x - 365 * y;
+                if (n % 366 === 0) {
+                    const z = n / 366;
+                    temp = 365 * y + 366 * z
+                    if (z > 0 && z <= max && Math.min(min_solution, temp) === temp) {
+                        min_variables = { w, x, y, z };
+                        min_solution = temp
+                    }
+                }
+            }
+        }
+    }
+    return [min_variables, min_solution]
+}
+
+
+console.log(solveMinDiophantineForPeriodicity(500))
