@@ -2,29 +2,23 @@ function conversionGregorianSexagenary(year) { // https://en.wikipedia.org/wiki/
     let modifiedYear = 0;
     let discardedFraction = 0;
 
-    switch (year) {
-        case year > 4:
-            modifiedYear = year - 3;
-            discardedFraction = Math.floor(modifiedYear, 60);
-            return modifiedYear - (60 * discardedFraction);
-
-        case year < 1:
-            year = Math.abs(year);
-            modifiedYear = year + 2;
-            discardedFraction = Math.floor(modifiedYear, 60);
-            return 60 - (modifiedYear - (60 * discardedFraction));
-        
-        case year == 1:
-            return 58;
-        
-        case year == 2:
-            return 59;
-
-        case year == 3:
-            return 60;
-
-        default:
-            throw "Something went wrong with converting Gregorian years to Sexagenary years.";
+    if (year > 4) {
+        modifiedYear = year - 3;
+        discardedFraction = Math.floor(modifiedYear/60);
+        return modifiedYear - (60 * discardedFraction);
+    } else if (year < 1) {
+        year = Math.abs(year);
+        modifiedYear = year + 2;
+        discardedFraction = Math.floor(modifiedYear/60);
+        return 60 - (modifiedYear - (60 * discardedFraction));
+    } else if (year === 1) {
+        return 58;
+    } else if (year === 2) {
+        return 59;
+    } else if (year === 3) {
+        return 60;
+    } else {
+        throw "Something went wrong with converting Gregorian years to Sexagenary years. (How the fuck does this even happen???)";
     }
 }
 
