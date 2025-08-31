@@ -43,5 +43,5 @@ function solveMinDiophantineForPeriodicity(max) {
     return [min_variables, min_solution]
 }
 
-
-console.log(solveMinDiophantineForPeriodicity(500))
+// Solution for min: w=1, x=7, y=6, z=55 --- 22320 days or ~61.1 years
+console.log(solveMinDiophantineForPeriodicity(55))
