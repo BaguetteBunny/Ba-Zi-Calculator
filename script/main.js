@@ -40,19 +40,10 @@ const sexagenaryCycleTable = [
     "Yang Earth Horse", "Yin Earth Goat", "Yang Metal Monkey", "Yin Metal Rooster", "Yang Water Dog", "Yin Water Pig"
 ];
 
-function yearlyElement(year){
-    let i = 0
-    if (year%2==0){
-        i = (year+6)%10
-    } 
-    else {
-        i = ((year+6)%10)-1
-    }
-    return i/2
+function getYearPillar(year) {
+    return sexagenaryCycleTable[conversionGregorianSexagenary(year-1)];
 }
-function yearlyAnimal(year){
-    return (year+8)%12
-}
+
 function cycleYear(a,e){
     if (a%2 == 0){
         if (a<=2*e) {j= 1} else {j= 61}
