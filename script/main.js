@@ -6,21 +6,39 @@ function conversionGregorianSexagenary(year) { // https://en.wikipedia.org/wiki/
         modifiedYear = year - 3;
         discardedFraction = Math.floor(modifiedYear/60);
         return modifiedYear - (60 * discardedFraction);
+
     } else if (year < 1) {
         year = Math.abs(year);
         modifiedYear = year + 2;
         discardedFraction = Math.floor(modifiedYear/60);
         return 60 - (modifiedYear - (60 * discardedFraction));
+
     } else if (year === 1) {
         return 58;
+
     } else if (year === 2) {
         return 59;
+
     } else if (year === 3) {
         return 60;
+
     } else {
         throw "Something went wrong with converting Gregorian years to Sexagenary years. (How the fuck does this even happen???)";
     }
 }
+
+const sexagenaryCycleTable = [
+    "Yang Wood Rat", "Yin Wood Ox", "Yang Fire Tiger", "Yin Fire Rabbit", "Yang Earth Dragon", "Yin Earth Snake",
+    "Yang Metal Horse", "Yin Metal Goat", "Yang Water Monkey", "Yin Water Rooster", "Yang Wood Dog", "Yin Wood Pig",
+    "Yang Fire Rat", "Yin Fire Ox", "Yang Earth Tiger", "Yin Earth Rabbit", "Yang Metal Dragon", "Yin Metal Snake",
+    "Yang Water Horse", "Yin Water Goat", "Yang Wood Monkey", "Yin Wood Rooster", "Yang Fire Dog", "Yin Fire Pig",
+    "Yang Earth Rat", "Yin Earth Ox", "Yang Metal Tiger", "Yin Metal Rabbit", "Yang Water Dragon", "Yin Water Snake",
+    "Yang Wood Horse", "Yin Wood Goat", "Yang Fire Monkey", "Yin Fire Rooster", "Yang Earth Dog", "Yin Earth Pig",
+    "Yang Metal Rat", "Yin Metal Ox", "Yang Water Tiger", "Yin Water Rabbit", "Yang Wood Dragon", "Yin Wood Snake",
+    "Yang Fire Horse", "Yin Fire Goat", "Yang Earth Monkey", "Yin Earth Rooster", "Yang Metal Dog", "Yin Metal Pig",
+    "Yang Water Rat", "Yin Water Ox", "Yang Wood Tiger", "Yin Wood Rabbit", "Yang Fire Dragon", "Yin Fire Snake",
+    "Yang Earth Horse", "Yin Earth Goat", "Yang Metal Monkey", "Yin Metal Rooster", "Yang Water Dog", "Yin Water Pig"
+];
 
 function yearlyElement(year){
     let i = 0
